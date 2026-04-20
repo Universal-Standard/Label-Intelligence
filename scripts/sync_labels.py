@@ -91,7 +91,8 @@ def ensure_label_doc(path: Path, name: str, description: str) -> None:
 - `documentation`
 
 ## Automation Expectations
-- Document bot/workflow behavior triggered by this label.
+- No automation behavior is enforced by default for this label.
+- Update this section in the same PR when workflow or bot behavior is introduced.
 
 ## Last Updated
 {date.today().isoformat()}
