@@ -1,0 +1,28 @@
+name: Label guide improvement
+description: Propose improvements to existing label guidance.
+title: "docs(label): improve <label-name> guidance"
+labels:
+  - documentation
+  - enhancement
+body:
+  - type: input
+    id: label_name
+    attributes:
+      label: Label name
+      description: Exact label to update.
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: Current gap
+      description: What is unclear, missing, or conflicting?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed improvement
+      description: Exact behavior and examples to add or revise.
+    validations:
+      required: true

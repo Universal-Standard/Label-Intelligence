@@ -1,0 +1,35 @@
+name: Sync Label Documentation
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_repo:
+        description: owner/repo to sync labels from
+        default: Universal-Standard/Label-Intelligence
+        required: true
+  schedule:
+    - cron: "0 8 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Sync labels
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_REPO: ${{ github.event.inputs.target_repo || 'Universal-Standard/Label-Intelligence' }}
+        run: |
+          python scripts/sync_labels.py --repo "$TARGET_REPO" --docs-dir docs/labels --index docs/labels/index.md
+      - name: Commit synced docs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: sync label documentation index"
+          file_pattern: docs/labels/*.md docs/labels/index.md

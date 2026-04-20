@@ -1,0 +1,7 @@
+# Default ownership for governance and automation
+* @Universal-Standard
+
+# Label guides and governance docs
+/docs/ @Universal-Standard
+/scripts/ @Universal-Standard
+/.github/ @Universal-Standard
